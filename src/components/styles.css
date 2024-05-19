@@ -1,0 +1,2111 @@
+:is(.remotes) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    transform: translateY(4rem);
+    /* position: relative;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%); */
+}
+
+:is(.remote) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 0.20rem solid #0c0d0ca9;
+    width: auto;
+    height: 5rem;
+    padding: 1.5rem;
+    transition: all 1.5s ease-in-out;
+    cursor: pointer;
+}
+
+:is(.remote) .remote-indicator {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1rem;
+    aspect-ratio: 1;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: all 1.5s ease-in-out;
+}
+
+:is(.remote) button {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    color: #ffffff;
+    font-size: 1.5rem;
+    letter-spacing: 0.25rem;
+    cursor: pointer;
+}
+
+/* Styles For .my-assistant div */
+
+:is(.my-assistant-room) {
+
+    --my-robot-room-transition: all 1.5s ease-in-out;
+    --my-robot-room-gap: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--my-robot-room-gap);
+
+    transition: var(--my-robot-room-transition);
+
+}
+
+/* Styles For .my-assistant div */
+
+/* Styles For .my-robot div And It's Children's */
+
+:is(.my-robot) {
+
+    --robot-background: linear-gradient(45deg, #0C0D0C, #0E0E0D);
+    --robot-border: 0.5rem solid #050605;
+    --robot-transition-for-all-parts: all 1.5s ease-in-out;
+
+    display: flex;
+    justify-content: center;
+    transform: translateY(15rem);
+
+    transition: var(--robot-transition);
+    z-index: 1;
+
+}
+
+:is(.my-robot-body),
+:is(.my-robot-fingers) {
+
+    position: relative;
+    transition: var(--robot-transition-for-all-parts);
+
+}
+
+:is(.my-robot-body)::before,
+:is(.my-robot-body)::after {
+
+    --robot-body-before-after-transform: translateX(-50%);
+
+    --robot-body-before-width: 12.4rem;
+    --robot-body-before-clip-path: polygon(50% 25%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    --robot-body-before-border-bottom: var(--robot-border);
+
+    --robot-body-after-width: 8rem;
+    --robot-body-after-height: 12rem;
+    --robot-body-after-clip-path: polygon(0 0, 0% 20%, 16% 100%, 25% 100%, 50% 50%, 75% 100%, 85% 100%, 70% 48%, 84% 100%, 100% 20%, 100% 0, 50% 0);
+
+    content: '';
+
+    position: absolute;
+    left: 50%;
+    transform: var(--robot-body-before-after-transform);
+
+    background: var(--robot-background);
+
+    transition: var(--robot-transition-for-all-parts);
+
+}
+
+:is(.my-robot-body)::before {
+
+    top: -4.8rem;
+
+    width: var(--robot-body-before-width);
+    aspect-ratio: 1;
+    clip-path: var(--robot-body-before-clip-path);
+    border-bottom: var(--robot-body-before-border-bottom);
+
+    z-index: 1;
+
+}
+
+:is(.my-robot-body)::after {
+
+    top: 7.5rem;
+
+    width: var(--robot-body-after-width);
+    height: var(--robot-body-after-height);
+    clip-path: var(--robot-body-after-clip-path);
+
+    z-index: -1;
+
+}
+
+:is(.my-robot-power) {
+
+    --robot-power-transform: translate(-50%, -50%);
+    --robot-power-width: 6rem;
+    --robot-power-height: 2.5rem;
+    --robot-power-clip-path: polygon(50% 15%, 75% 25%, 100% 40%, 86% 70%, 80% 84%, 50% 85%, 20% 84%, 14% 70%, 0 40%, 25% 25%);
+    --robot--power-background: linear-gradient(45deg, #050605, #050605, #050605);
+
+    position: absolute;
+    top: -10.5rem;
+    left: 50%;
+    transform: var(--robot-power-transform);
+
+    width: var(--robot-power-width);
+    height: var(--robot-power-height);
+    background: var(--robot--power-background);
+    clip-path: var(--robot-power-clip-path);
+
+    transition: var(--robot-transition-for-all-parts);
+    z-index: 1;
+
+}
+
+:is(.my-robot-power)::after {
+
+    content: "";
+
+    display: block;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 1.15rem;
+    aspect-ratio: 1;
+    background: linear-gradient(to bottom right, rgb(4, 130, 247), rgb(77, 4, 247)),
+        linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+
+    transition: var(--robot-transition-for-all-parts);
+    animation: givingPowerToMyRobot 5s linear infinite;
+
+    opacity: 0;
+    visibility: hidden;
+
+    cursor: pointer;
+
+}
+
+@keyframes givingPowerToMyRobot {
+    50% {
+        opacity: 1;
+        visibility: visible;
+        background: linear-gradient(to bottom right, rgb(4, 130, 247), rgb(77, 4, 247)),
+            linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+
+    }
+}
+
+:is(.my-robot-face) {
+
+    --robot-face-transform: translate(-50%, -50%);
+    --robot-face-width: 9rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    top: -5.9rem;
+    left: 50%;
+    transform: var(--robot-face-transform);
+
+    width: var(--robot-face-width);
+    aspect-ratio: 1;
+    background: var(--robot-background);
+    border-radius: 50%;
+
+    transition: var(--robot-transition-for-all-parts);
+    z-index: -1;
+
+}
+
+:is(.my-robot-face):before {
+
+    --robot-face-before-transform: translateX(-50%);
+    --robot-face-before-width: 5rem;
+    --robot-face-before-height: 3rem;
+    --robot-face-before-background: linear-gradient(45deg, #050605, #050605, #050605);
+
+    content: "";
+
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: var(--robot-face-before-transform);
+
+    width: var(--robot-face-before-width);
+    height: var(--robot-face-before-height);
+    background: var(--robot-face-before-background);
+
+    border-bottom-left-radius: 70px;
+    border-bottom-right-radius: 70px;
+
+    transition: var(--robot-transition-for-all-parts);
+    cursor: pointer;
+
+}
+
+:is(.my-robot-face):hover:before {
+
+    --robot-face-hover-before-height: 2rem;
+    height: var(--robot-face-hover-before-height);
+
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+
+}
+
+:is(.my-robot-eyes) {
+
+    --robot-eyes-gap: 0.7rem;
+    --robot-eyes-transition: all 1.5s ease-in-out;
+
+    display: flex;
+    gap: var(--robot-eyes-gap);
+
+    position: relative;
+    top: -1.5rem;
+
+    transition: var(--robot-eyes-transition);
+
+}
+
+:is(.my-robot-eyes) .my-robot-eye {
+
+    --robot-eye-width: 2rem;
+    --robot-eye-background: #ffffff;
+    --robot-eye-transition: all 1.5s ease-in-out;
+
+    position: relative;
+    display: block;
+
+    width: var(--robot-eye-width);
+    aspect-ratio: 1;
+    background: var(--robot-eye-background);
+    border-radius: 50%;
+
+    transition: var(--robot-eye-transition);
+
+}
+
+:is(.my-robot-eyes) .my-robot-eye::before {
+
+    --robot-eye-before-transform: translateX(-50%, -50%);
+    --robot-eye-before-width: 1rem;
+    --robot-eye-before-background: #000000;
+    --robot-eye-before-transition: all 1.5s ease-in-out;
+
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* transform: var(--robot-eye-before-transform); */
+    transform: translateX(-50%) translateY(-50%);
+
+    width: var(--robot-eye-before-width);
+    aspect-ratio: 1;
+    background: var(--robot-eye-before-background);
+    border-radius: 50%;
+
+    transition: var(--robot-eye-before-transition);
+    transition-delay: 0.2s;
+    animation: movTheEye 15s linear infinite;
+    animation-delay: 0.2s;
+
+}
+
+@keyframes movTheEye {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    20% {
+        transform: translateX(-50%) translateY(0%);
+    }
+
+    40% {
+        transform: translateX(-100%) translateY(-50%);
+    }
+
+    60% {
+        transform: translateX(-50%) translateY(-100%);
+    }
+
+    80% {
+        transform: translateX(0%) translateY(-50%);
+    }
+}
+
+:is(.my-robot-ears) {
+
+    --robot-ears-gap: 8.8rem;
+
+    position: absolute;
+
+    display: flex;
+    gap: var(--robot-ears-gap);
+
+    transition: var(--robot-transition-for-all-parts);
+
+}
+
+:is(.my-robot-ear) {
+
+    --robot-ear-width: 1.8rem;
+    --robot-ear-height: 3rem;
+    --robot-ear-background: var(--robot-background);
+    --robot-ear-clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+
+    position: relative;
+
+    width: var(--robot-ear-width);
+    height: var(--robot-ear-height);
+    background: var(--robot-ear-background);
+    clip-path: var(--robot-ear-clip-path);
+
+    transition: var(--robot-transition-for-all-parts);
+
+}
+
+:is(.my-robot-hands) {
+
+    --robot-hands-transform: translate(-50%, -50%);
+    --robot-hands-width: 21rem;
+    --robot-hands-height: 1.8rem;
+    --robot-hands-background: var(--robot-background);
+
+    position: relative;
+    top: -5.25rem;
+    left: 50%;
+    transform: var(--robot-hands-transform);
+
+    width: var(--robot-hands-width);
+    height: var(--robot-hands-height);
+    background: var(--robot-hands-background);
+    border-radius: 1rem;
+
+    transition: var(--robot-transition-for-all-parts);
+
+}
+
+:is(.my-robot-hands)::before,
+:is(.my-robot-hands)::after {
+
+    --robot-hands-before-after-width: 13.5rem;
+    --robot-hands-before-after-background: var(--robot-background);
+
+    content: '';
+
+    position: absolute;
+    top: -5.60rem;
+
+    width: var(--robot-hands-before-after-width);
+    aspect-ratio: 1;
+    background: var(--robot-hands-before-after-background);
+
+    transition: var(--robot-transition-for-all-parts);
+    z-index: -1;
+
+}
+
+:is(.my-robot-hands)::before {
+
+    --robot-hands-before-clip-path: polygon(55% 25%, 75% 40%, 75% 56%, 55% 56%, 35% 56%, 35% 50%, 55% 50%, 55% 44%, 35% 44%, 35% 38%, 62% 38%, 50% 30%);
+
+    left: -8.2rem;
+    clip-path: var(--robot-hands-before-clip-path);
+
+}
+
+:is(.my-robot-hands)::after {
+
+    --robot-hands-after-clip-path: polygon(45% 25%, 25% 40%, 25% 56%, 45% 56%, 65% 56%, 65% 50%, 45% 50%, 45% 44%, 65% 44%, 65% 38%, 38% 38%, 50% 30%);
+
+    right: -8.2rem;
+    clip-path: var(--robot-hands-after-clip-path);
+
+}
+
+:is(.my-robot-middle-of-hand),
+:is(.my-robot-middle-of-hand)::before {
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    width: 1.5rem;
+    aspect-ratio: 1;
+    background: linear-gradient(to bottom right, rgb(4, 130, 247), rgb(77, 4, 247)),
+        linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+
+    border-radius: 0.25rem;
+
+    transition: var(--robot-transition-for-all-parts);
+    animation: givingPowerToMyRobot 5s linear infinite;
+
+    opacity: 0;
+    visibility: hidden;
+
+}
+
+:is(.my-robot-middle-of-hand) {
+
+    top: 0.72rem;
+    left: 20.4rem;
+
+}
+
+:is(.my-robot-middle-of-hand)::before {
+
+    content: '';
+
+    top: 50%;
+    right: 19.11rem;
+
+}
+
+:is(.my-robot-legs) {
+
+    position: relative;
+    transition: var(--robot-transition-for-all-parts);
+
+}
+
+:is(.my-robot-legs)::before,
+:is(.my-robot-legs)::after {
+
+    --robot-legs-before-after-width: 5.5rem;
+    --robot-legs-before-after-background: var(--robot-background);
+    --robot-legs-before-after-clip-path: ellipse(25% 40% at 50% 50%);
+
+    content: '';
+
+    position: absolute;
+    top: 13.85rem;
+
+    width: var(--robot-legs-before-after-width);
+    aspect-ratio: 1;
+    clip-path: var(--robot-legs-before-after-clip-path);
+    background: var(--robot-legs-before-after-background);
+
+    transition: var(--robot-transition-for-all-parts);
+    z-index: 1;
+
+}
+
+:is(.my-robot-legs)::before {
+
+    --robot-legs-before-transform: rotate(110deg);
+
+    left: 3.69rem;
+    transform: var(--robot-legs-before-transform);
+
+}
+
+:is(.my-robot-legs)::after {
+
+    --robot-legs-after-transform: rotate(-110deg);
+
+    right: 3.69rem;
+    transform: var(--robot-legs-after-transform);
+
+}
+
+:is(.my-robot-shoes-heel),
+:is(.my-robot-shoes-heel)::before {
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    width: 1.15rem;
+    aspect-ratio: 1;
+
+    background: linear-gradient(to bottom right, rgb(4, 130, 247), rgb(77, 4, 247)),
+        linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+
+    border-radius: 0.25rem;
+
+    transition: var(--robot-transition-for-all-parts);
+    animation: givingPowerToMyRobot 5s linear infinite;
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: -1;
+
+}
+
+:is(.my-robot-shoes-heel) {
+
+    top: 20.80rem;
+    left: 13.25rem;
+
+}
+
+:is(.my-robot-shoes-heel)::before {
+
+    content: '';
+
+    top: 50%;
+    right: 5rem;
+
+}
+
+/* Styles For .my-robot div And It's Children's */
+
+/* XXX-XXX-XXX --- XXX-XXX-XXX */
+
+/* Styles For .my-car div And It's Children's */
+
+:is(.my-car) {
+
+    --my-assistant-transition: all 1.5s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+
+    transform: translateY(-2rem);
+    transition: var(--my-assistant-transition);
+
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(0) translateY(-5rem);
+    }
+
+    100% {
+        transform: translateX(-100rem) translateY(-5rem);
+    }
+}
+
+:is(.drive) {
+    animation: moveRight 5s ease-in-out 2s forwards;
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(100rem) translateY(-5rem);
+    }
+
+    100% {
+        transform: translateX(0) translateY(-5rem);
+    }
+}
+
+:is(.reverse) {
+    animation: moveLeft 5s ease-in-out backwards;
+}
+
+:is(.my-car-body) {
+
+    --my-assistant-body-transition: all 1.5s ease-in-out;
+
+    position: relative;
+    transition: var(--my-assistant-transition);
+
+}
+
+:is(.my-car-body)::before,
+:is(.my-car-body)::after {
+
+    --my-assistant-body-before-width: 41rem;
+    --my-assistant-body-before-height: 50.71rem;
+    --my-assistant-body-before-clip-path:
+        polygon(16% 75%, 38.65% 75%, 44.35% 69%, 48.5% 64.55%, 64.75% 64.55%, 74.5% 75%, 95% 75%,
+            100% 40%, 100% 68%, 100% 40%, 40% 32.6%, 16% 30%);
+
+    --my-assistant-body-after-width: 34rem;
+    --my-assistant-body-after-height: 76rem;
+    --my-assistant-body-after-clip-path:
+        polygon(12% 65%, 12% 65%, 28% 65%, 40% 58%, 60% 58%, 72% 65%, 100% 65%,
+            100% 40%, 100% 68%, 100% 35%, 40% 40%, 0 43%);
+
+    --my-assistant-body-before-after-background:
+        linear-gradient(45deg, #0C0D0C, #0E0E0D);
+    --my-assistant-body-before-after-transition: all 1.5s ease-in-out;
+
+    content: '';
+
+    position: absolute;
+
+    background: var(--my-assistant-body-before-after-background);
+
+    transition: var(--my-assistant-body-before-after-transition);
+
+}
+
+:is(.my-car-body)::before {
+
+    top: -5.43rem;
+    left: -7.56rem;
+
+    width: var(--my-assistant-body-before-width);
+    height: var(--my-assistant-body-before-height);
+    clip-path: var(--my-assistant-body-before-clip-path);
+
+}
+
+:is(.my-car-body)::after {
+
+    top: -16.8rem;
+    right: 0.97rem;
+
+    width: var(--my-assistant-body-after-width);
+    height: var(--my-assistant-body-after-height);
+    clip-path: var(--my-assistant-body-after-clip-path);
+
+}
+
+:is(.my-car-front-light) {
+
+    position: absolute;
+    top: 15.35rem;
+    left: -32.85rem;
+    transform: rotate(80.5deg);
+
+    width: 4.5rem;
+    height: 4.5rem;
+    background-image: url(../assets/car-head-light.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: all 1.5s ease-in-out;
+    z-index: 1;
+
+}
+
+:is(.my-car-front-light)::before,
+:is(.my-car-front-light)::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 3rem;
+    transform: translate(-50%, -50%);
+    display: block;
+    transition: all 1.5s ease-in-out;
+}
+
+:is(.my-car-front-light)::before {
+
+    top: 0;
+
+    height: 1.5rem;
+    background: linear-gradient(45deg, #0C0D0C, #0E0E0D);
+
+    cursor: pointer;
+    pointer-events: all;
+
+}
+
+:is(.light-opened)::before {
+    top: 50%;
+    height: 6rem;
+    transition: all 1.5s ease-in-out;
+}
+
+:is(.my-car-front-light)::after {
+
+    top: 50%;
+
+    height: 6rem;
+    background: linear-gradient(45deg, #000000df, #000000df, #000000df);
+    border: 2px solid #0E0E0D;
+
+    z-index: -1;
+    pointer-events: none;
+
+}
+
+:is(.my-car-front-indicator) {
+
+    --my-assistant-power-width: 5.35rem;
+    --my-assistant-power-height: 1.5rem;
+    --my-assistant-power-background: rgb(255, 0, 0);
+    --my-assistant-power-clip-path:
+        polygon(50% 15%, 75% 25%, 100% 40%, 86% 70%, 80% 84%, 50% 85%, 20% 84%, 14% 70%, 0 40%, 25% 25%);
+    --my-assistant-power-transform: translate(-50%, -50%) rotate(180deg);
+    --my-assistant-power-transition: all 1.5s ease-in-out;
+
+    position: absolute;
+    top: 33rem;
+    left: -28.15rem;
+    transform: var(--my-assistant-power-transform);
+
+    width: var(--my-assistant-power-width);
+    height: var(--my-assistant-power-height);
+
+    border: 6px solid #0E0E0D;
+
+    transition: var(--my-assistant-power-transition);
+
+    z-index: -1;
+
+}
+
+:is(.indicator-on) {
+    animation: turningOnTheFrontIndicator 1s linear infinite;
+}
+
+@keyframes turningOnTheFrontIndicator {
+    50% {
+        background: linear-gradient(to bottom right, rgb(4, 130, 247), rgb(77, 4, 247)),
+            linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+
+    }
+}
+
+:is(.my-car-tires) {
+
+    --my-assistant-face-transform: translate(-50%, -50%);
+    --my-assistant-face-width: 10rem;
+    --my-assistant-face-transition: all 1.5s ease-in-out;
+
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: var(--my-assistant-face-transform);
+
+    transition: var(--my-assistant-face-transition);
+    z-index: 1;
+
+}
+
+:is(.my-car-tires):before,
+:is(.my-car-tires):after {
+
+    --my-assistant-face-before-transform: translateX(-50%);
+    --my-assistant-face-before-width: 10rem;
+    --my-assistant-face-before-background:
+        linear-gradient(360deg, rgb(8, 8, 8) 0%, rgb(9, 9, 9) 5%, rgb(9, 9, 9) 100%);
+    --my-assistant-face-before-transition: all 1.5s ease-in-out;
+
+    content: "";
+
+    position: absolute;
+    top: 28rem;
+    transform: var(--my-assistant-face-before-transform);
+
+    width: var(--my-assistant-face-before-width);
+    aspect-ratio: 1;
+    background: var(--my-assistant-face-before-background);
+    border-radius: 50%;
+
+    transition: var(--my-assistant-face-before-transition);
+
+}
+
+:is(.my-car-tires):before {
+    right: 8rem;
+}
+
+:is(.my-car-tires):after {
+    left: 15.60rem;
+}
+
+:is(.my-car-inside-rims) {
+
+    --my-assistant-eyes-gap: 27rem;
+    --my-assistant-eyes-transition: all 1.5s ease-in-out;
+
+    position: absolute;
+    top: 28.90rem;
+    left: 0;
+    transform: translateX(-50%);
+
+    display: flex;
+    gap: var(--my-assistant-eyes-gap);
+
+    transition: var(--my-assistant-eyes-transition);
+    z-index: 2;
+
+}
+
+:is(.my-car-inside-rims) .my-car-inside-rim {
+
+    --my-assistant-eye-width: 4rem;
+    --my-assistant-eye-background:
+        linear-gradient(0deg, rgb(125, 125, 125) 0%, rgb(125, 125, 125) 45%, rgb(125, 125, 125) 100%);
+    --my-assistant-eye-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 60% 100%, 40% 100%, 0% 70%, 0% 30%);
+    --my-assistant-eye-transition: all 1.5s ease-in-out;
+
+    position: relative;
+    top: 2.10rem;
+    transform: translateX(-50%);
+
+    width: var(--my-assistant-eye-width);
+    aspect-ratio: 1;
+    background: var(--my-assistant-eye-background);
+    clip-path: var(--my-assistant-eye-clip-path);
+
+    transition: var(--my-assistant-eye-transition);
+
+}
+
+:is(.my-car-inside-rims) .my-car-inside-rim:nth-child(1) {
+    left: -0.5rem;
+}
+
+:is(.my-car-inside-rims) .my-car-inside-rim:nth-child(2) {
+    left: 2.10rem;
+}
+
+:is(.my-car-inside-rims) .my-car-inside-rim::before {
+
+    --my-assistant-eye-before-transform: translateX(-50%) translateY(-50%);
+    --my-assistant-eye-before-width: 2rem;
+    --my-assistant-eye-before-background:
+        linear-gradient(0deg, rgb(10, 10, 10) 0%, rgb(10, 10, 10) 45%, rgb(10, 10, 10) 100%);
+    --my-assistant-eye-before-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 50% 100%, 50% 100%, 0% 70%, 0% 30%);
+    --my-assistant-eye-before-transition: all 1.5s ease-in-out;
+
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: var(--my-assistant-eye-before-transform);
+
+    width: var(--my-assistant-eye-before-width);
+    aspect-ratio: 1;
+    background: var(--my-assistant-eye-before-background);
+    clip-path: var(--my-assistant-eye-before-clip-path);
+
+    transition: var(--my-assistant-eye-before-transition);
+
+}
+
+@keyframes animateInsideRim {
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+:is(.start) {
+    animation: animateInsideRim 2s linear infinite;
+}
+
+:is(.stop) {
+    animation: animateInsideRim 5s linear 5s alternate;
+}
+
+:is(.my-car-outside-rims) {
+
+    --my-assistant-ears-gap: 8.8rem;
+    --my-assistant-ears-transform: translate(-50%, -50%);
+    --my-assistant-ears-transition: all 1.5s ease-in-out;
+
+    display: flex;
+    gap: var(--my-assistant-ears-gap);
+
+    position: absolute;
+    top: 32.85rem;
+    transform: var(--my-assistant-ears-transform);
+
+    transition: var(--my-assistant-ears-transition);
+    z-index: 1;
+
+}
+
+:is(.my-car-outside-rim) {
+
+    --my-assistant-ear-width: 6.5rem;
+    --my-assistant-ear-background:
+        linear-gradient(0deg, rgb(225, 225, 225) 50%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 100%);
+    --my-assistant-ear-clip-path:
+        polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    --my-assistant-ear-transition: all 1.5s ease-in-out;
+
+    position: relative;
+
+    width: var(--my-assistant-ear-width);
+    aspect-ratio: 1;
+    background: var(--my-assistant-ear-background);
+    clip-path: var(--my-assistant-ear-clip-path);
+
+    transition: var(--my-assistant-ear-transition);
+
+}
+
+:is(.my-car-outside-rim):nth-child(1) {
+    right: 10.35rem;
+}
+
+:is(.my-car-outside-rim):nth-child(2) {
+    left: 7.95rem;
+}
+
+@keyframes animateOutsideRim {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+:is(.run) {
+    animation: animateOutsideRim 2s linear infinite;
+}
+
+:is(.rest) {
+    animation: animateOutsideRim 5s linear 5s alternate;
+}
+
+:is(.my-car-interior) {
+
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 22.5rem;
+    left: -1.2rem;
+    transform: translate(-50%, -50%);
+
+    width: 40.25rem;
+    height: 26rem;
+
+    background: linear-gradient(45deg, #050605, #050605, #050605);
+
+    clip-path:
+        polygon(0 19.35%, 0 84%, 0 66%, 18% 66%, 27.5% 85%, 50% 85%, 72.5% 85%, 82% 66%,
+            100% 66%, 100% 85%, 100% 15.35%, 50.75% 4.5%);
+
+    transition: all 2s ease-in-out;
+    z-index: 1;
+
+}
+
+:is(.my-car-seat) {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -65%);
+
+    width: 50rem;
+    height: 30rem;
+
+    /* background-image: url(../assets/car-interior.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+
+    transition: all 1.5s ease-in-out;
+    z-index: -2;
+
+}
+
+:is(.my-car-door) {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transition: all 1.7s ease-in-out;
+
+}
+
+:is(.my-car-door)::before,
+:is(.my-car-door)::after {
+
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    transform-style: preserve-3d;
+    perspective: 100em;
+
+    width: 100%;
+    height: 61%;
+    background: linear-gradient(45deg, #0E0E0D, #0E0E0D, #0E0E0D);
+
+    transition: all 1.8s ease-in-out;
+    transition-delay: 0.5s;
+    z-index: 1;
+
+}
+
+:is(.my-car-door)::before {
+    right: 0;
+    transform-origin: left;
+    clip-path:
+        polygon(0 0%, 0 66%, 0 66%, 12% 66%, 25% 85%, 50% 85%, 50% 85%,
+            50% 85%, 50% 85%, 50% 85%, 50% 85%, 50% 0%);
+}
+
+:is(.open-the-left-door)::before {
+    transform: perspective(100em) translate(0px) rotateY(-105deg);
+    transition: transform 1.6s ease-in-out;
+    transition-delay: 0.3s;
+}
+
+:is(.my-car-door)::after {
+    left: 0;
+    transform-origin: right;
+    clip-path:
+        polygon(50% 85%, 50% 85%, 50% 85%, 50% 85%, 50% 85%, 50% 85%, 75% 85%,
+            88% 66%, 100% 66%, 100% 85%, 100% 0%, 50% 0%);
+}
+
+:is(.open-the-right-door)::after {
+    transform: perspective(100em) translate(0px) rotateY(105deg);
+    transition: transform 1.6s ease-in-out;
+    transition-delay: 0.3s;
+}
+
+:is(.my-car-door-handle) {
+    position: absolute;
+    top: 14.5rem;
+    left: 35.5rem;
+    transform: translate(-50%, -50%);
+    width: 8rem;
+    aspect-ratio: 1;
+    background-image: url(../assets/car-door-handle.png);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 1.5s ease-in-out;
+    z-index: 2;
+}
+
+:is(.my-car-door-window) {
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+    height: 100%;
+
+    transition: all 1.7s ease-in-out;
+    z-index: 2;
+
+}
+
+:is(.my-car-door-window)::before,
+:is(.my-car-door-window)::after {
+
+    content: '';
+
+    position: absolute;
+    top: 1rem;
+
+    width: 100%;
+    height: 42%;
+    /* background: linear-gradient(45deg, #0E0E0D, #0E0E0D, #0E0E0D); */
+    background: linear-gradient(45deg, #050605, #050605, #050605);
+
+    transition: all 1.8s ease-in-out;
+    transition-delay: 0.5s;
+
+}
+
+:is(.my-car-door-window)::before {
+    right: 0;
+    transform-origin: left;
+    clip-path:
+        polygon(0 0%, 0 66%, 0 66%, 0% 85%, 25% 85%, 50% 85%, 50% 85%,
+            50% 85%, 50% 85%, 50% 85%, 50% 85%, 51% 0%);
+}
+
+:is(.my-car-door-window)::after {
+    left: 0;
+    transform-origin: right;
+    clip-path:
+        polygon(50% 85%, 50% 85%, 50% 5%, 50% 85%, 50% 85%, 50% 85%, 75% 85%,
+            100% 85%, 100% 66%, 100% 85%, 100% 0%, 51% 0%);
+}
+
+:is(.window-opened)::after {
+    width: 0;
+    transition: width 1.6s ease-in-out;
+}
+
+:is(.window-closed)::after {
+    width: 100%;
+    transition: width 1.6s ease-in-out;
+    transition-delay: 0.3s;
+}
+
+:is(.left-window-opened)::before {
+    transform: perspective(100em) translate(0px) rotateY(-105deg);
+    transition: transform 1.6s ease-in-out;
+    transition-delay: 0.3s;
+}
+
+:is(.right-window-opened)::after {
+    transform: perspective(100em) translate(0px) rotateY(105deg);
+    transition: transform 1.6s ease-in-out;
+    transition-delay: 0.3s;
+}
+
+:is(.window-lines) {
+
+    position: absolute;
+    top: 22.2%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 105%;
+    height: 9rem;
+    background: linear-gradient(45deg, #000000, #000000, #000000);
+    clip-path:
+        polygon(0 48%, 50.2% 5%, 50.2% 100%, 51.5% 100%, 51.5% 5%, 100% 35%, 100% 35%,
+            100% 35%, 100% 35%, 100% 35%, 100% 35%, 50.7% 0%);
+
+    z-index: 1;
+
+}
+
+:is(.window-lines-expand) {
+    opacity: 1;
+    transition: opacity 5s ease-in-out;
+    transition-delay: 1.2s;
+}
+
+:is(.window-lines-collapsed) {
+    opacity: 0;
+    transition: opacity 0.9s ease-in-out;
+}
+
+:is(.my-car-window-lock) {
+
+    position: absolute;
+    top: 27%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+
+    width: 2rem;
+    aspect-ratio: 1;
+    background: linear-gradient(45deg, #050605, #050605, #050605);
+    border-radius: 0.25rem;
+    border: 2px solid #121212df;
+
+    transition: all 2s ease-in-out;
+    transition-delay: 0.1s;
+
+    animation: givingPowerToMyCar 1s linear infinite;
+
+    z-index: 1;
+    cursor: pointer;
+
+}
+
+
+:is(.my-car-indicator) {
+
+    position: absolute;
+    top: 20.7rem;
+    right: 20rem;
+    transform: translate(-50%, -50%);
+
+    width: 5rem;
+    height: 8rem;
+    /* background: linear-gradient(45deg, #1F201F, #373736, #464747); */
+    /* background-image: url(../assets/car-indicator.png); */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 0.5rem;
+    /* box-shadow: inset 0 0 0.5rem #000000; */
+
+    transition: all 0.7s ease-in-out;
+
+    transition: all 0.7s ease-in-out;
+    z-index: 9999;
+
+    cursor: pointer;
+
+}
+
+:is(.my-car-indicator-light) {
+
+    position: relative;
+    top: 2rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 20rem;
+    aspect-ratio: 1;
+    /* background: linear-gradient(45deg, #1F201F, #373736, #464747); */
+    /* background-image: url(../assets/car-indicator-1.png); */
+    background-size: contain;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+
+    transition: all 0.7s ease-in-out;
+    cursor: pointer;
+
+}
+
+:is(.my-car-gas-cap) {
+
+    position: absolute;
+    top: 23rem;
+    left: 25.5rem;
+    transform: translate(-50%, -50%);
+
+    width: 4rem;
+    aspect-ratio: 1;
+
+    background: linear-gradient(45deg, #050605, #050605, #050605);
+    border-radius: 0.25rem;
+
+    transition: all 1.5s ease-in-out;
+    cursor: pointer;
+    pointer-events: none;
+
+}
+
+:is(.my-car-gas-cap)::before {
+
+    content: '';
+
+    display: block;
+    position: relative;
+    transform-origin: left;
+    perspective: 100em;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(45deg, #0C0D0C, #0E0E0D);
+    /* background: linear-gradient(45deg, #121212df, #121212df, #121212df); */
+    /* box-shadow: 
+        inset 0 0 .1rem rgb(09, 09, 09), 
+        inset 0 0 .1rem rgb(09, 09, 09), 
+        inset 0 0 .1rem rgb(09, 09, 09); */
+    border-radius: 0.25rem;
+
+    transition: all 1.5s ease-in-out;
+    cursor: pointer;
+    pointer-events: all;
+
+}
+
+:is(.cap-opened)::before {
+    transform: perspective(100em) translate(0px) rotateY(-105deg);
+    transition: transform 1.5s ease-in-out;
+    transition-delay: 0.1s;
+}
+
+:is(.my-car-gas-cap)::after {
+
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 3.2rem;
+    aspect-ratio: 1;
+
+    background-image: url(../assets/car-gas-cap.png);
+    background-size: 5rem;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: all 1.5s ease-in-out;
+    pointer-events: none;
+    z-index: -1;
+
+}
+
+:is(.my-car-silencer-1),
+:is(.my-car-silencer-2) {
+    position: absolute;
+    left: 29.5rem;
+    transform: translate(-50%, -50%);
+    background-image: url(../assets/car-exhaust-pipe.png);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 10rem;
+    aspect-ratio: 1;
+    z-index: -1;
+    transition: all 1.5s ease-in-out;
+}
+
+:is(.my-car-silencer-1) {
+    top: 27.25rem;
+}
+
+:is(.my-car-silencer-2) {
+    top: 29.5rem;
+}
+
+/* Styles For .my-car div And It's Children's */
+
+/* - - - - - - - - - - - - - */
+
+/* ---X-X-X-X-X--- MEDIA_QUERIES ---X-X-X-X-X--- */
+
+/* XXX-----XXX-----XXX Styles For Screen Width 1309px || 81.813rem XXX-----XXX-----XXX */
+
+@media screen and (width <=81.813rem) {
+
+    /* :is(.about-me) {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 85%;
+    } */
+
+}
+
+/* XXX-----XXX-----XXX Styles For Screen Width 1309px || 81.813rem XXX-----XXX-----XXX */
+
+/* XXX-----XXX-----XXX Styles For Screen Width 1150px || 71.875rem XXX-----XXX-----XXX */
+
+@media screen and (width <=71.875rem) {
+
+    :is(.my-car) {
+        transform: translateX(-1rem) translateY(-2rem);
+    }
+
+    :is(.my-car-body)::before,
+    :is(.my-car-body)::after {
+
+        --my-assistant-body-before-width: 35rem;
+        --my-assistant-body-before-height: 46.84rem;
+
+        --my-assistant-body-after-width: 28rem;
+        --my-assistant-body-after-height: 70rem;
+
+    }
+
+    :is(.my-car-body)::before {
+        top: -4.60rem;
+        left: -5.60rem;
+    }
+
+    :is(.my-car-body)::after {
+        top: -15rem;
+        right: 0rem;
+    }
+
+    :is(.my-car-tires):before,
+    :is(.my-car-tires):after {
+        --my-assistant-face-before-width: 9rem;
+        top: 26.5rem;
+    }
+
+    :is(.my-car-tires):before {
+        right: 5rem;
+    }
+
+    :is(.my-car-tires):after {
+        left: 14.20rem;
+    }
+
+    :is(.my-car-inside-rims) {
+        top: 29.1rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim {
+        --my-assistant-eye-width: 4rem;
+        top: 50%;
+        left: 50%;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim:nth-child(1) {
+        left: 3.50rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim:nth-child(2) {
+        left: 0.65rem;
+    }
+
+    :is(.my-car-outside-rims) {
+        top: 30.95rem;
+    }
+
+    :is(.my-car-outside-rim) {
+        --my-assistant-ear-width: 6rem;
+    }
+
+    :is(.my-car-outside-rim):nth-child(1) {
+        right: 6.60rem;
+    }
+
+    :is(.my-car-outside-rim):nth-child(2) {
+        left: 6.75rem;
+    }
+
+    :is(.my-car-interior) {
+        top: 21.25rem;
+        left: 0.1rem;
+        transform: translate(-50%, -50%);
+        width: 33.5rem;
+        height: 24rem;
+        clip-path:
+            polygon(0 19.35%, 0 84%, 0 66%, 18% 66%, 27.5% 85%, 50% 85%, 72.5% 85%, 82% 66%,
+                100% 66%, 100% 85%, 100% 15.35%, 50% 4.5%);
+    }
+
+    :is(.window-lines) {
+        top: 22.8%;
+        height: 8.20rem;
+        clip-path:
+            polygon(0 48%, 49.50% 5%, 49.50% 100%, 50.70% 100%, 50.70% 5%, 100% 35%, 100% 35%,
+                100% 35%, 100% 35%, 100% 35%, 100% 35%, 50% 0%);
+    }
+
+    :is(.my-car-door-handle) {
+        top: 13.3rem;
+        left: 29rem;
+        width: 7.5rem;
+    }
+
+    :is(.my-car-front-light) {
+        top: 14.30rem;
+        left: -26.11rem;
+        transform: rotate(79.5deg);
+        width: 4.3rem;
+        aspect-ratio: 1;
+    }
+
+    :is(.my-car-front-indicator) {
+        --my-assistant-power-width: 4.45rem;
+        top: 31rem;
+        left: -22.45rem;
+    }
+
+    :is(.my-car-gas-cap) {
+        top: 22rem;
+        left: 23rem;
+        width: 3.75rem;
+    }
+
+    :is(.my-car-gas-cap)::after {
+        width: 3rem;
+    }
+
+    :is(.my-car-silencer-1),
+    :is(.my-car-silencer-2) {
+        left: 26rem;
+        width: 9rem;
+    }
+
+    :is(.my-car-silencer-1) {
+        top: 25.85rem;
+    }
+
+    :is(.my-car-silencer-2) {
+        top: 27.85rem;
+    }
+
+}
+
+/* XXX-----XXX-----XXX Styles For Screen Width 1150px || 71.875rem XXX-----XXX-----XXX */
+
+/* XXX-----XXX-----XXX Styles For Screen Width 975px || 60.938rem XXX-----XXX-----XXX */
+
+@media screen and (width <=60.938rem) {
+
+    :is(.remote) {
+        height: 4.5rem;
+        padding: 1rem;
+    }
+
+    :is(.remote) button {
+        font-size: 1rem;
+    }
+
+    :is(.my-car) {
+        transform: translateX(-0.5rem) translateY(-2rem);
+    }
+
+    :is(.my-car-body)::before,
+    :is(.my-car-body)::after {
+
+        --my-assistant-body-before-width: 29rem;
+        --my-assistant-body-before-height: 43.50rem;
+
+        --my-assistant-body-after-width: 23.5rem;
+        --my-assistant-body-after-height: 65rem;
+
+    }
+
+    :is(.my-car-body)::before {
+        top: -4.35rem;
+        left: -4.68rem;
+    }
+
+    :is(.my-car-body)::after {
+        top: -14rem;
+    }
+
+    :is(.my-car-tires):before,
+    :is(.my-car-tires):after {
+        --my-assistant-face-before-width: 8rem;
+        top: 24.60rem;
+    }
+
+    :is(.my-car-tires):before {
+        right: 3.78rem;
+    }
+
+    :is(.my-car-tires):after {
+        left: 11.70rem;
+    }
+
+    :is(.my-car-inside-rims) {
+        top: 26.80rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim {
+        --my-assistant-eye-width: 3.70rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim:nth-child(1) {
+        left: 5.4rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim:nth-child(2) {
+        left: -1.80rem;
+    }
+
+    :is(.my-car-outside-rims) {
+        top: 28.55rem;
+    }
+
+    :is(.my-car-outside-rim) {
+        --my-assistant-ear-width: 5.5rem;
+    }
+
+    :is(.my-car-outside-rim):nth-child(1) {
+        right: 4.65rem;
+    }
+
+    :is(.my-car-outside-rim):nth-child(2) {
+        left: 4.58rem;
+    }
+
+    :is(.my-car-interior) {
+        top: 19.65rem;
+        left: 0;
+        width: 28rem;
+        height: 22.5rem;
+        clip-path:
+            polygon(0 19.35%, 0 84%, 0 66%, 18% 66%, 27.5% 85%, 50% 85%, 72.5% 85%, 82% 66%,
+                100% 66%, 100% 85%, 100% 15.35%, 50.5% 4.5%);
+    }
+
+    :is(.window-lines) {
+        top: 22.8%;
+        height: 7.80rem;
+        clip-path:
+            polygon(0 48%, 49.95% 5%, 49.95% 100%, 51.1% 100%, 51.1% 5%, 100% 35%, 100% 35%,
+                100% 35%, 100% 35%, 100% 35%, 100% 35%, 50.5% 0%);
+    }
+
+    :is(.my-car-window-lock) {
+        left: 94%;
+    }
+
+    :is(.my-car-door-handle) {
+        top: 12.5rem;
+        left: 24rem;
+        width: 7rem;
+    }
+
+    :is(.my-car-front-light) {
+        top: 13rem;
+        left: -21.5rem;
+        transform: rotate(78deg);
+        width: 4.1rem;
+    }
+
+    :is(.my-car-front-indicator) {
+        --my-assistant-power-width: 3.72rem;
+        top: 28.80rem;
+        left: -18.80rem;
+    }
+
+    :is(.my-car-gas-cap) {
+        top: 20rem;
+        left: 18.75rem;
+        width: 3.50rem;
+    }
+
+    :is(.my-car-gas-cap)::after {
+        width: 2.8rem;
+    }
+
+    :is(.my-car-silencer-1),
+    :is(.my-car-silencer-2) {
+        left: 21.20rem;
+        width: 9rem;
+    }
+
+    :is(.my-car-silencer-1) {
+        top: 23.6rem;
+    }
+
+    :is(.my-car-silencer-2) {
+        top: 25.6rem;
+    }
+
+}
+
+/* XXX-----XXX-----XXX Styles For Screen Width 975px || 60.938rem XXX-----XXX-----XXX */
+
+/* XXX-----XXX-----XXX Styles For Screen Width 830px || 51.875rem XXX-----XXX-----XXX */
+
+@media screen and (width <=51.875rem) {
+
+    :is(.remotes) {
+        gap: 3rem;
+    }
+
+    :is(.remote) {
+        height: 4rem;
+    }
+
+    :is(.my-car) {
+        transform: translateX(-0.5rem) translateY(-2rem);
+    }
+
+    :is(.my-car-body)::before,
+    :is(.my-car-body)::after {
+
+        --my-assistant-body-before-width: 25.5rem;
+        --my-assistant-body-before-height: 41.35rem;
+
+        --my-assistant-body-after-width: 20.5rem;
+        --my-assistant-body-after-height: 62rem;
+
+    }
+
+    :is(.my-car-body)::before {
+        top: -4.70rem;
+        left: -4.2rem;
+    }
+
+    :is(.my-car-tires):before,
+    :is(.my-car-tires):after {
+        --my-assistant-face-before-width: 7rem;
+        top: 22.75rem;
+    }
+
+    :is(.my-car-tires):before {
+        right: 3.22rem;
+    }
+
+    :is(.my-car-tires):after {
+        left: 10.22rem;
+    }
+
+    :is(.my-car-inside-rims) {
+        top: 24.68rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim {
+        --my-assistant-eye-width: 3.40rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim:nth-child(1) {
+        left: 6.60rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim:nth-child(2) {
+        left: -3.25rem;
+    }
+
+    :is(.my-car-outside-rims) {
+        top: 26.25rem;
+    }
+
+    :is(.my-car-outside-rim) {
+        --my-assistant-ear-width: 5rem;
+    }
+
+    :is(.my-car-outside-rim):nth-child(1) {
+        right: 3.39rem;
+    }
+
+    :is(.my-car-outside-rim):nth-child(2) {
+        left: 3.33rem;
+    }
+
+    :is(.my-car-interior) {
+        top: 18.1rem;
+        width: 24.5rem;
+        height: 21.5rem;
+        clip-path:
+            polygon(0 19.35%, 0 84%, 0 66%, 18% 66%, 27.5% 85%, 50% 85%, 72.5% 85%, 82% 66%,
+                100% 66%, 100% 85%, 100% 15.35%, 50% 4.5%);
+    }
+
+    :is(.window-lines) {
+        top: 22.8%;
+        height: 7.50rem;
+        clip-path:
+            polygon(0 48%, 49.48% 5%, 49.48% 100%, 50.70% 100%, 50.70% 5%, 100% 35%, 100% 35%,
+                100% 35%, 100% 35%, 100% 35%, 100% 35%, 50% 0%);
+    }
+
+    :is(.my-car-door-handle) {
+        top: 11.90rem;
+        left: 21rem;
+        width: 6rem;
+    }
+
+    :is(.my-car-front-light) {
+        top: 11.70rem;
+        left: -18.55rem;
+        transform: rotate(77.8deg);
+        width: 3.9rem;
+    }
+
+    :is(.my-car-front-indicator) {
+        --my-assistant-power-width: 3.25rem;
+        top: 26.76rem;
+        left: -16.38rem;
+    }
+
+    :is(.my-car-gas-cap) {
+        top: 18.75rem;
+        left: 16.55rem;
+        width: 3.25rem;
+    }
+
+    :is(.my-car-silencer-1),
+    :is(.my-car-silencer-2) {
+        left: 18.55rem;
+        width: 8rem;
+    }
+
+    :is(.my-car-silencer-1) {
+        top: 21.95rem;
+    }
+
+    :is(.my-car-silencer-2) {
+        top: 23.75rem;
+    }
+
+}
+
+/* XXX-----XXX-----XXX Styles For Screen Width 830px || 51.875rem XXX-----XXX-----XXX */
+
+/* XXX-----XXX-----XXX Styles For Screen Width 725px || 45.313rem XXX-----XXX-----XXX */
+
+@media screen and (width <=45.313rem) {
+
+    :is(.remotes) {
+        gap: 1rem;
+    }
+
+    :is(.remote) {
+        height: 3.5rem;
+    }
+
+    :is(.my-car) {
+        transform: translateX(-0.5rem) translateY(-2rem);
+    }
+
+    :is(.my-car-body)::before,
+    :is(.my-car-body)::after {
+
+        --my-assistant-body-before-width: 21rem;
+        --my-assistant-body-before-height: 39.95rem;
+
+        --my-assistant-body-after-width: 17rem;
+        --my-assistant-body-after-height: 60rem;
+
+    }
+
+    :is(.my-car-body)::before {
+        top: -4.95rem;
+        left: -3.4rem;
+    }
+
+    :is(.my-car-tires):before,
+    :is(.my-car-tires):after {
+        --my-assistant-face-before-width: 5.5rem;
+        top: 21.50rem;
+    }
+
+    :is(.my-car-tires):before {
+        right: 3rem;
+    }
+
+    :is(.my-car-tires):after {
+        left: 8.47rem;
+    }
+
+    :is(.my-car-inside-rims) {
+        top: 22.80rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim {
+        --my-assistant-eye-width: 3rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim:nth-child(1) {
+        left: 8rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim:nth-child(2) {
+        left: -5.07rem;
+    }
+
+    :is(.my-car-outside-rims) {
+        top: 24.25rem;
+    }
+
+    :is(.my-car-outside-rim) {
+        --my-assistant-ear-width: 4rem;
+    }
+
+    :is(.my-car-outside-rim):nth-child(1) {
+        right: 2.1rem;
+    }
+
+    :is(.my-car-outside-rim):nth-child(2) {
+        left: 2.03rem;
+    }
+
+    :is(.my-car-interior) {
+        top: 17.11rem;
+        width: 20.40rem;
+        height: 20.60rem;
+        clip-path:
+            polygon(0 19.35%, 0 84%, 0 66%, 18% 66%, 27.5% 85%, 50% 85%, 72.5% 85%, 82% 66%,
+                100% 66%, 100% 85%, 100% 15.35%, 49.6% 4.5%);
+    }
+
+    :is(.window-lines) {
+        top: 23%;
+        height: 7.15rem;
+        clip-path:
+            polygon(0 48%, 49.11% 5%, 49.11% 100%, 50.65% 100%, 50.65% 5%, 100% 35%, 100% 35%,
+                100% 35%, 100% 35%, 100% 35%, 100% 35%, 49.7% 0%);
+    }
+
+    :is(.my-car-window-lock) {
+        left: 93%;
+    }
+
+    :is(.my-car-door-handle) {
+        top: 11.30rem;
+        left: 17rem;
+        width: 5.5rem;
+    }
+
+    :is(.my-car-front-light) {
+        top: 10.65rem;
+        left: -14.20rem;
+        transform: rotate(75.5deg);
+        width: 1.95rem;
+        background-size: 3.90rem;
+    }
+
+    :is(.my-car-front-indicator) {
+        --my-assistant-power-width: 2.90rem;
+        top: 25.45rem;
+        left: -13.60rem;
+    }
+
+    :is(.my-car-gas-cap) {
+        top: 17.5rem;
+        left: 13.6rem;
+        width: 3rem;
+    }
+
+    :is(.my-car-gas-cap)::after {
+        width: 2.55rem;
+    }
+
+    :is(.my-car-silencer-1),
+    :is(.my-car-silencer-2) {
+        left: 15.4rem;
+        width: 7rem;
+    }
+
+    :is(.my-car-silencer-1) {
+        top: 21.1rem;
+    }
+
+    :is(.my-car-silencer-2) {
+        top: 22.70rem;
+    }
+
+}
+
+/* XXX-----XXX-----XXX Styles For Screen Width 725px || 45.313rem XXX-----XXX-----XXX */
+
+/* XXX-----XXX-----XXX Styles For Screen Width 600px || 37.5rem XXX-----XXX-----XXX */
+
+@media screen and (width <=37.5rem) {
+
+    :is(.remotes) {
+        gap: 0.5rem;
+    }
+
+    :is(.remote) {
+        height: 3.25rem;
+        padding: 0.75rem;
+    }
+
+    :is(.my-car) {
+        transform: translateX(-0.5rem) translateY(-2rem);
+    }
+
+    :is(.my-car-body)::before,
+    :is(.my-car-body)::after {
+
+        --my-assistant-body-before-width: 18.25rem;
+        --my-assistant-body-before-height: 36rem;
+
+        --my-assistant-body-after-width: 15rem;
+        --my-assistant-body-after-height: 54rem;
+
+    }
+
+    :is(.my-car-body)::before {
+        top: -4.93rem;
+        left: -3rem;
+    }
+
+    :is(.my-car-body)::after {
+        top: -13rem;
+    }
+
+    :is(.my-car-tires):before,
+    :is(.my-car-tires):after {
+        --my-assistant-face-before-width: 5rem;
+        top: 19rem;
+    }
+
+    :is(.my-car-tires):before {
+        right: 2.5rem;
+    }
+
+    :is(.my-car-tires):after {
+        left: 7.3rem;
+    }
+
+    :is(.my-car-inside-rims) {
+        top: 20.18rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim {
+        --my-assistant-eye-width: 2.8rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim:nth-child(1) {
+        left: 8.77rem;
+    }
+
+    :is(.my-car-inside-rims) .my-car-inside-rim:nth-child(2) {
+        left: -6.21rem;
+    }
+
+    :is(.my-car-outside-rims) {
+        top: 21.5rem;
+    }
+
+    :is(.my-car-outside-rim) {
+        --my-assistant-ear-width: 3.5rem;
+    }
+
+    :is(.my-car-outside-rim):nth-child(1) {
+        right: 1.38rem;
+    }
+
+    :is(.my-car-outside-rim):nth-child(2) {
+        left: 1.15rem;
+    }
+
+    :is(.my-car-interior) {
+        top: 15rem;
+        left: -0.09rem;
+        width: 17.75rem;
+        height: 18.75rem;
+        clip-path:
+            polygon(0 19.35%, 0 84%, 0 66%, 18% 66%, 27.5% 85%, 50% 85%, 72.5% 85%, 82% 66%,
+                100% 66%, 100% 85%, 100% 15.35%, 50.5% 4.5%);
+    }
+
+    :is(.window-lines) {
+        top: 23.4%;
+        height: 6.6rem;
+        clip-path:
+            polygon(0 48%, 50% 5%, 50% 100%, 51.5% 100%, 51.5% 5%, 100% 35%, 100% 35%,
+                100% 35%, 100% 35%, 100% 35%, 100% 35%, 50.5% 0%);
+    }
+
+    :is(.my-car-window-lock) {
+        left: 92%;
+    }
+
+    :is(.my-car-door-handle) {
+        top: 10.3rem;
+        left: 14.50rem;
+        width: 5.5rem;
+    }
+
+    :is(.my-car-front-light) {
+        top: 9rem;
+        left: -12.80rem;
+        transform: rotate(75.5deg);
+        width: 1.95rem;
+        background-size: 3.8rem;
+    }
+
+    :is(.my-car-front-light)::after {
+        height: 5rem;
+    }
+
+    :is(.my-car-front-indicator) {
+        --my-assistant-power-width: 2.45rem;
+        top: 22.5rem;
+        left: -12rem;
+    }
+
+    :is(.my-car-gas-cap) {
+        top: 15.4rem;
+        left: 11.80rem;
+        width: 2.8rem;
+    }
+
+    :is(.my-car-gas-cap)::after {
+        width: 2rem;
+    }
+
+    :is(.my-car-silencer-1),
+    :is(.my-car-silencer-2) {
+        left: 13.4rem;
+        width: 6rem;
+    }
+
+    :is(.my-car-silencer-1) {
+        top: 18.55rem;
+    }
+
+    :is(.my-car-silencer-2) {
+        top: 20rem;
+    }
+
+}
+
+/* XXX-----XXX-----XXX Styles For Screen Width 600px || 37.5rem XXX-----XXX-----XXX */
+
+/* ---X-X-X-X-X--- MEDIA_QUERIES ---X-X-X-X-X--- */
